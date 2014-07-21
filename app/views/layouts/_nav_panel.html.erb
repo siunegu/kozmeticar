@@ -15,15 +15,18 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
       <li class=<%= 'active' if request.original_fullpath =~ /^\/products/ %>><%= link_to "Services", products_path %></li>
+      <% if user_signed_in? %>
       <li class=<%= 'active' if request.original_fullpath =~ /^\/reservations/ %>><%= link_to "Your Reservations", reservations_path %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-      <% if user_signed_in? %>
       <li class=<%= 'active' if request.original_fullpath =~ /^\/users/ %>><%= link_to 'Settings', edit_user_registration_path %></li>
       <% if current_user.try(:admin?) %>
       <li><%= link_to "Admin", rails_admin_path %>
-      <li><%= link_to "Logout", destroy_user_session_path, method: :delete %>
       <% end %>
+      <li><%= link_to "Logout", destroy_user_session_path, method: :delete %>
+      <% else %>
+      <li><%= link_to "Login", new_user_session_path %> </li>
+      <li><%= link_to "Register", new_user_registration_path %></li>
       <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
