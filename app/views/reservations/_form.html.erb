@@ -15,11 +15,11 @@
 
   <div class="field">
     <%= f.label :starts_at %><br>
-    <%= f.datetime_select :starts_at %>
+    <%= f.collection_select :product_id, Product.where("available_at > ?", Time.now), :id, :available_at, { include_blank: "Select a time"}, class: 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :product_id %><br>
-    <%= f.collection_select :product_id, Product.upcoming, :id, :name, { include_blank: "Select a product"}, class: 'form-control' %>
+    <%= f.collection_select :product_id, Product.where("available_at > ?", Time.now), :id, :name, { include_blank: "Select a product"}, class: 'form-control' %>
   </div>
   <br>
   <div class="actions">
