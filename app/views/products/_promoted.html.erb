@@ -2,7 +2,7 @@
 
   <tbody>
     <% @products.promoted.each do |product| %>
-    <% unless product.available_at < Time.now %>
+    <% unless product.available_at < Time.now + (30.minutes) %>
       <tr class="warning">
         <td> <div class="label label-warning">PROMOTED</div> <%= product.name %></td>
         <td><%= product.employee %></td>
