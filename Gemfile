@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.0.beta1'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# gem 'sqlite3'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0.rc1'
@@ -63,7 +63,7 @@ gem 'paper_trail', '~> 3.0.3'
 gem 'puma'
 
 # Postgres
-# gem 'pg'
+gem 'pg'
 
 # For Heroku deployment
 gem 'rails_12factor', group: :production
