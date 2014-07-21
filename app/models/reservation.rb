@@ -7,9 +7,9 @@ class Reservation < ActiveRecord::Base
   validate :start_date_cannot_be_in_the_past
 
   def start_date_cannot_be_in_the_past
-  	if starts_at && starts_at < DateTime.now + (15.minutes)
-  		errors.add(:starts_at, 'has to be at least 15 minutes from present time')
-  	end
+    if starts_at && starts_at < DateTime.now + (15.minutes)
+      errors.add(:starts_at, 'has to be at least 15 minutes from present time')
+    end
   end
 
   def overlap?

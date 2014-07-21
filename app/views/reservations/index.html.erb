@@ -14,7 +14,7 @@
   <tbody>
     <% @reservations.each do |reservation| %>
       <tr>
-        <td><%= reservation.starts_at %></td>
+        <td><%= reservation.starts_at.strftime("%B %e, %H:%M") %></td>
         <td><%= reservation.user.email %></td>
         <% if reservation.product.try(:name?) %>
         <td><%= reservation.product.name %></td>

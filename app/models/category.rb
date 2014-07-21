@@ -1,7 +1,7 @@
 class Category < ActiveRecord::Base
-	has_paper_trail
+  has_paper_trail
 
-	has_many :products, dependent: :nullify
+  has_many :products, dependent: :nullify
 
-	validates :name, presence: true
+  validates :name, presence: true
 end
