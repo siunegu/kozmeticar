@@ -1,0 +1,17 @@
+<table class="table">
+
+  <tbody>
+    <% @products.promoted.each do |product| %>
+    <% unless product.available_at < Time.now %>
+      <tr class="warning">
+        <td> <div class="label label-warning">PROMOTED</div> <%= product.name %></td>
+        <td><%= product.employee %></td>
+        <td><%= product.available_at.strftime("%B %e, %H:%M") %> </td>
+        <td><%= product.price.to_i %> ден.</td>
+        <td><%= product.description %></td>
+        <td><%= link_to "Make a Reservation", new_reservation_path(product_id: product.name), class: "btn btn-primary btn-xs" %></td>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
