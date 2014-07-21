@@ -1,0 +1,23 @@
+<div class="container">
+
+<h3>Today's services available <% if @category.present? %> - <small><%= @category.name  %></small><% end %></h3>
+
+<ul class="nav nav-tabs" role="tablist">
+<% Category.order(products_count: :desc).each do |category| %>
+  <li class=<%= 'active' if category == @category %>><%= link_to "#{category.name}", categoried_products_path(category_id: category.id) %></li>
+<% end %>
+</ul>
+
+<% if @products.any? %>
+
+<%= render 'products/promoted' %>
+
+<%= render 'products/upcoming' %>
+
+<% else %>
+
+<div class="text-muted"><p class="text-center">No services available :(. Check back later.</p></div>
+
+<% end %>
+
+</div>
