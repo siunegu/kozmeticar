@@ -61,3 +61,6 @@ gem 'paper_trail', '~> 3.0.3'
 
 # Puma
 gem 'puma'
+
+# Postgres
+# gem 'pg'
