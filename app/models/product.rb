@@ -11,7 +11,6 @@ class Product < ActiveRecord::Base
   scope :not_promoted, -> { where(:is_promoted => false) }
   scope :recent, -> { order("available_at ASC") }
   scope :upcoming, lambda { where("available_at between ? and ?", Date.today.beginning_of_day, Date.today.end_of_day) }
-  # scope :identical, -> (available_at) { time_constraint "available_at = ?", available_at }
 
 
   validates :name, :presence => true
