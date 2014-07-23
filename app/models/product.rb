@@ -17,4 +17,5 @@ class Product < ActiveRecord::Base
   validates :available_at, presence: true
   validates :description, presence: true
   validates :employee, presence: true
+  validates :price, presence: true
 end

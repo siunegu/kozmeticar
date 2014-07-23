@@ -2,7 +2,7 @@ class Reservation < ActiveRecord::Base
   has_paper_trail
   
   belongs_to :user
-  belongs_to :product
+  belongs_to :product, counter_cache: true
 
   validate :start_date_cannot_be_in_the_past
 
@@ -16,11 +16,11 @@ class Reservation < ActiveRecord::Base
   	#TODO
   end
 
-  def self.new_reservations_count
+  def self.new_since_user_last_seen
     # Should return new reservation since last user updated at
   end
 
   def self.reservations_canceled
-    #TODO
+      where("is_canceled = ?", true).count
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140720210016) do
+ActiveRecord::Schema.define(version: 20140722141226) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20140720210016) do
   create_table "products", force: true do |t|
     t.string   "name"
     t.datetime "available_at"
-    t.boolean  "is_promoted",  default: false
+    t.boolean  "is_promoted",        default: false
     t.integer  "user_id"
     t.text     "description"
     t.datetime "created_at"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20140720210016) do
     t.string   "employee"
     t.string   "price"
     t.integer  "category_id"
+    t.integer  "reservations_count", default: 0
   end
 
   add_index "products", ["user_id"], name: "index_products_on_user_id"

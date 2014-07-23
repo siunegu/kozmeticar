@@ -21,7 +21,7 @@
       <ul class="nav navbar-nav navbar-right">
       <li class=<%= 'active' if request.original_fullpath =~ /^\/users/ %>><%= link_to 'Settings', edit_user_registration_path %></li>
       <% if current_user.try(:admin?) %>
-      <li><%= link_to "Admin", rails_admin_path %>
+      <li><%= link_to "Admin", rails_admin_path %></li>
       <% end %>
       <li><%= link_to "Logout", destroy_user_session_path, method: :delete %>
       <% else %>
