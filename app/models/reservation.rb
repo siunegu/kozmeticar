@@ -6,8 +6,14 @@ class Reservation < ActiveRecord::Base
 
   validate :start_date_cannot_be_in_the_past
 
-  # A user can only make a reservation on a product once
-  validates :user_id, :uniqueness => { :scope => :product_id }
+  # A user can only make a reservation on a product once each day
+  validate :user_quota, :on => :create
+
+  def user_quota
+    if user.reservations.today.count >= 1
+      errors.add(:base, "You can't make a reservation on this product again today")
+    end
+  end
 
   def start_date_cannot_be_in_the_past
     if starts_at && starts_at < DateTime.now + (15.minutes)

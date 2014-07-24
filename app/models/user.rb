@@ -10,7 +10,12 @@ class User < ActiveRecord::Base
   before_create :ensure_at_least_one_admin
 
   has_many :products
-  has_many :reservations
+  has_many :reservations do
+
+    def today
+      where(:created_at => (Time.now.beginning_of_day..Time.now))
+    end
+  end
 
   # By default this will make sure the first user to registers gets admin status
   def ensure_at_least_one_admin
