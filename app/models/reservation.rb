@@ -5,6 +5,7 @@ class Reservation < ActiveRecord::Base
   belongs_to :product, counter_cache: true
 
   validate :start_date_cannot_be_in_the_past
+  validate :slots_exceed
 
   # A user can only make a reservation on a product once
   validates :user_id, :uniqueness => { :scope => :product_id, message: "has already booked" }
@@ -15,6 +16,12 @@ class Reservation < ActiveRecord::Base
   def start_date_cannot_be_in_the_past
     if starts_at && starts_at < DateTime.now + (15.minutes)
       errors.add(:starts_at, 'has to be at least 15 minutes from present time')
+    end
+  end
+
+  def slots_exceed
+    if product.reservations_count == product.reservation_slots
+      errors.add(:base, "Already booked")
     end
   end
 
