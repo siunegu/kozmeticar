@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.includes(:category).recent.upcoming
+    @products = Product.includes(:category).recent.upcoming.reservation_quota
 
     if params[:category_id]
       @category = Category.where('id = ?', params[:category_id]).first!
@@ -76,6 +76,6 @@ class ProductsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
       params.require(:product).permit(:name, :available_at, :is_promoted, :user_id, 
-        :category_id, :description, :employee, :price, :reservations_count)
+        :category_id, :description, :employee, :price, :reservations_count, :reservation_slots)
     end
 end

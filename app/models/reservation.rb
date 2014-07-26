@@ -6,8 +6,11 @@ class Reservation < ActiveRecord::Base
 
   validate :start_date_cannot_be_in_the_past
 
-  # A user can only make a reservation on a product once each day
-  validates :user_id, :uniqueness => { :scope => :product_id }
+  # A user can only make a reservation on a product once
+  validates :user_id, :uniqueness => { :scope => :product_id, message: "has already booked" }
+
+  # This is cool. Lets Reservation use the available_at attribute from product.
+  delegate :available_at, to: :product
 
   def start_date_cannot_be_in_the_past
     if starts_at && starts_at < DateTime.now + (15.minutes)
@@ -16,7 +19,7 @@ class Reservation < ActiveRecord::Base
   end
 
   def overlap?
-  	#TODO
+  	# Check to see if any reservations overlap. Might not be needed if its first come first serve.
   end
 
   def self.new_reservations_today

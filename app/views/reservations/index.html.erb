@@ -15,7 +15,7 @@
   <tbody>
     <% @reservations.each do |reservation| %>
       <tr>
-        <td><%= reservation.product.available_at.strftime("%B %e, %H:%M") %></td>
+        <td><%= reservation.available_at.strftime("%B %e, %H:%M") %></td>
         <td><%= reservation.user.email %></td>
         <td><%= reservation.product.name %></td>
         <td><%= reservation.product.employee %></td>

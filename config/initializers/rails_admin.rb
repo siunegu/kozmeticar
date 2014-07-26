@@ -24,6 +24,7 @@ RailsAdmin.config do |config|
       field :price
       field :category
       field :is_promoted
+      field :reservation_slots
       field :reservations_count
       field :versions
     end

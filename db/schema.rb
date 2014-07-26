@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140722141226) do
+ActiveRecord::Schema.define(version: 20140726203640) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20140722141226) do
     t.string   "price"
     t.integer  "category_id"
     t.integer  "reservations_count", default: 0
+    t.integer  "reservation_slots",  default: 1
   end
 
   add_index "products", ["user_id"], name: "index_products_on_user_id"
