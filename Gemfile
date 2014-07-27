@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.0.beta1'
+gem 'rails', '4.1.4'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0.rc1'
@@ -59,13 +59,14 @@ gem 'paper_trail', '~> 3.0.3'
 # Puma
 gem 'puma'
 
+# PostgreSQL
+gem 'pg'
+
 group :production do
-  gem 'pg'
   gem 'rails_12factor'
 end
 
 group :development, :test do
-  gem 'sqlite3'
   gem 'better_errors'
   gem 'binding_of_caller'
 end
