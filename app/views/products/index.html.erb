@@ -2,7 +2,14 @@
 
 <h3>Today's services available <% if @category.present? %> - <small><%= @category.name  %></small><% end %></h3>
 
+<%= form_tag products_path, method: 'get', html: {role: "form"} do %>
+  <p>
+    <%= text_field_tag :search, params[:search], placeholder: "Search by name, price and employee", class: "form-control" %>
+  </p>
+<% end %>
+
 <ul class="nav nav-tabs" role="tablist">
+<li class=<%= 'active' unless @category.present? %>><%= link_to "All Products", products_path %></li>
 <% Category.order(products_count: :desc).each do |category| %>
   <li class=<%= 'active' if category == @category %>><%= link_to "#{category.name}", categoried_products_path(category_id: category.id) %></li>
 <% end %>

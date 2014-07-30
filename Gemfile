@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.4'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0.rc1'
+gem 'sass-rails', '~> 4.0.3'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -40,9 +40,6 @@ gem 'sdoc',          group: :doc, require: false
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin]
-
 # Bootstrap
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
@@ -62,6 +59,9 @@ gem 'puma'
 # PostgreSQL
 gem 'pg'
 
+# Postgres search
+gem 'pg_search'
+
 group :production do
   gem 'rails_12factor'
 end
@@ -69,4 +69,5 @@ end
 group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'quiet_assets'
 end
