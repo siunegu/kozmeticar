@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   
   resources :reservations
   
-  resources :products do
+  resources :products, only: [:index, :show] do
     collection do
       get 'categoried/:category_id', to: 'products#index', as: :categoried
     end
