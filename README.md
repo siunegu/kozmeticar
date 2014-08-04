@@ -10,4 +10,5 @@ Development
 1. `rails s`
 
 #### TODO
-1. Datepicker
+1. Emberjs
+1. Studios
