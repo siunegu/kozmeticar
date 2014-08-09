@@ -1,24 +1,31 @@
 <div class="container">
 
-<h3>Today's services available <% if @category.present? %> - <small><%= @category.name  %></small><% end %></h3>
-
-<%= form_tag products_path, method: 'get', html: {role: "form"} do %>
+<div class="row">
+	<div class="panel panel-default">
+	<div class="panel-body">
+		<%= form_tag products_path, method: 'get', html: {role: "form"} do %>
   <p>
-  <div class="col-md-5">
-    <%= text_field_tag :date, params[:date], "data-behaviour" => "datepicker", id: "datepicker", placeholder: "Search by date", class: "form-control" %>
+  <div class="col-md-6">
+    <%= text_field_tag :date, params[:date], "data-behaviour" => "datepicker", id: "datepicker", placeholder: "Search products by date", class: "form-control" %>
   </div>
-    <%= submit_tag "Submit", name: nil, class: "btn btn-success" %>
+    <%= submit_tag "Search", name: nil, class: "btn btn-success" %>
  </p>
 <% end %>
+</div>
+	</div>
 
-<ul class="nav nav-tabs" role="tablist">
+<div class="row">
 
-<li class=<%= 'active' unless @category.present? %>><%= link_to "All Products", products_path %></li>
-<% Category.order(products_count: :desc).each do |category| %>
-<li class=<%= 'active' if category == @category %>><%= link_to "#{category.name}", categoried_products_path(category_id: category.id) %></li>
-<% end %>
+<div class="col-md-3">
+	<ul class="nav nav-pills nav-stacked">
+		<li class=<%= 'active' unless @category.present? %>><%= link_to "All Products", products_path, class: "list-group-item" %></li>
+		<% Category.order(products_count: :desc).each do |category| %>
+		<li class=<%= 'active' if category == @category %>><%= link_to "#{category.name}", categoried_products_path(category_id: category.id), class: "list-group-item" %></li>
+		<% end %>
+	</ul>
+</div>
 
-</ul>
+<div class="col-md-9">
 
 <% if @products.any? %>
 
@@ -26,8 +33,15 @@
 
 <% else %>
 
-<div class="text-muted"><p class="text-center">No services available :(. Check back later.</p></div>
+<div class="text-muted"><p class="text-center">There are no services available at this time :(</p></div>
 
 <% end %>
+
+</div>
+</div>
+
+
+
+</div>
 
 </div>

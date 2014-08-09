@@ -16,4 +16,6 @@
 //= require bootstrap-sprockets
 //= require bootstrap-datepicker
 //= require turbolinks
+//= require nprogress
+//= require nprogress-turbolinks
 //= require_tree .

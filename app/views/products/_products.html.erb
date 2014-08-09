@@ -1,36 +1,43 @@
-<table class="table">
+<% @products.promoted.each do |product| %>
+<% unless product.available_at < Time.now + (30.minutes) %>
+   <div class="col-sm-4 col-lg-4 col-md-4">
+     <div class="thumbnail">
+       <span class="promo"></span>
+        <span class="sale">Promo</span>
+          <div class="caption">
+            <h4 class="pull-right"><%= product.price %> ден</h4>
+              <h4><%= product.name %></h4>
+              <p><%= product.description %></p>
+          </div>
+            <div class="clearfix">
+              <div class="employees">
+                <p class="pull-right"><%= link_to "Book Now!", new_reservation_path(product_id: product.name), class: "btn btn-primary btn-xs" %></p>
+                    <p><%= product.employee %></p>
+                </div>
+             </div>
+      </div>
+    </div>
+<% end %>
+<% end %>
 
-  <tbody>
-    <% @products.promoted.each do |product| %>
-    <% unless product.available_at < Time.now + (30.minutes) %>
-      <tr class="warning">
-        <td> <div class="label label-warning">PROMOTED</div> <%= product.name %></td>
-        <td><%= product.employee %></td>
-        <td><%= product.available_at.strftime("%B %e, %H:%M") %> </td>
-        <td><%= product.price.to_i %> ден.</td>
-        <td><%= product.description %></td>
-        <td><%= link_to "Make a Reservation", new_reservation_path(product_id: product.name), class: "btn btn-primary btn-xs" %></td>
-      </tr>
-      <% end %>
-    <% end %>
-  </tbody>
-</table>
 
 
-<table class="table table-hover">
-
-  <tbody>
-    <% @products.not_promoted.each do |product| %>
-    <% unless product.available_at < Time.now + (30.minutes) %>
-      <tr>
-        <td> <div class="label label-success">NEW</div> <%= product.name %></td>
-        <td><%= product.employee %></td>
-        <td><%= product.available_at.strftime("%B %e, %H:%M") %> </td>
-        <td><%= product.price.to_i %> ден.</td>
-        <td><%= product.description %></td>
-        <td><%= link_to "Make a Reservation", new_reservation_path(product_id: product.name), class: "btn btn-primary btn-xs" %></td>
-      </tr>
-      <% end %>
-    <% end %>
-  </tbody>
-</table>
+<% @products.not_promoted.each do |product| %>
+<% unless product.available_at < Time.now + (30.minutes) %>
+   <div class="col-sm-4 col-lg-4 col-md-4">
+     <div class="thumbnail">
+          <div class="caption">
+            <h4 class="pull-right"><%= product.price %> ден</h4>
+              <h4><%= product.name %></h4>
+              <p><%= product.description %></p>
+          </div>
+            <div class="clearfix">
+              <div class="employees">
+                <p class="pull-right"><%= link_to "Book Now!", new_reservation_path(product_id: product.name), class: "btn btn-primary btn-xs" %></p>
+                    <p><%= product.employee %></p>
+                </div>
+             </div>
+      </div>
+    </div>
+<% end %>
+<% end %>

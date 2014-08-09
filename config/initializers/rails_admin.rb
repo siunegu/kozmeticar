@@ -30,6 +30,23 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model 'Reservation' do
+    show do
+      field :available_at
+      field :user
+      field :product
+      field :is_canceled
+      field :created_at
+    end
+    
+    edit do
+      field :user
+      field :product
+      field :is_canceled
+      field :versions
+    end
+  end
+
   ## == Cancan ==
   # config.authorize_with :cancan
 

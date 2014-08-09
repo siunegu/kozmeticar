@@ -44,6 +44,12 @@ gem 'sdoc',          group: :doc, require: false
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 
+# Font Awesome
+gem "font-awesome-rails"
+
+# NProgress
+gem 'nprogress-rails'
+
 # Devise
 gem 'devise'
 
@@ -55,6 +61,9 @@ gem 'paper_trail', '~> 3.0.3'
 
 # Puma
 gem 'puma'
+
+# Foreman
+gem 'foreman'
 
 # PostgreSQL
 gem 'pg'
