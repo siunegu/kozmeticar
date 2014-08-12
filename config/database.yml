@@ -1,17 +1,17 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: kozmeticar_dev
+  database: kozmeticar_development
   pool: 5
   host: localhost
-  username: ember
-  password: "kozmeticar"
+  username: kozmeticar
+  password: 
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: kozmeticar_prod
+  database: kozmeticar_production
   pool: 5
   host: localhost
-  username: ember
-  password: "kozmeticar"
+  username: kozmeticar
+  password: 
