@@ -1,6 +1,6 @@
 module ApplicationHelper
 
   def broadcast_message
-  	BroadcastMessage.last
+    BroadcastMessage.last
   end
 end

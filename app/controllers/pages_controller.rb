@@ -4,7 +4,6 @@ class PagesController < ApplicationController
   end
 
   def recent_reservations
-  	@recent_reservations = Reservation.joins(:product).recent.order("available_at DESC")
+    @recent_reservations = Reservation.joins(:product).recent.order("available_at DESC")
   end
-
 end
