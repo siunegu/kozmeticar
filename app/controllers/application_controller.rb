@@ -11,17 +11,13 @@ class ApplicationController < ActionController::Base
   	authenticate_user!
 
   	if current_user && !current_user.admin?
-  		render_404
+  		redirect_to root_path
   	end
   end
   helper_method :require_admin!
 
   def peek_enabled?
     current_user.try(:admin?)
-  end
-
-  def render_404
-    render: file: Rails.root.join("public", "404"), layout: false, status: 404
   end
 
   protected
