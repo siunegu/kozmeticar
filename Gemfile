@@ -71,6 +71,16 @@ gem 'pg'
 # Postgres search
 gem 'pg_search'
 
+# PGHero
+gem 'pghero'
+
+# Lets peek .. in our app
+gem 'peek'
+gem 'peek-git'
+gem 'peek-performance_bar'
+gem 'peek-pg'
+gem 'peek-rblineprof'
+
 group :production do
   gem 'rails_12factor'
 end

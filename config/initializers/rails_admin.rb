@@ -47,6 +47,27 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model 'User' do
+    edit do
+      field :firstname
+      field :lastname
+      field :email
+      field :password
+      field :password_confirmation
+      field :reset_password_sent_at
+      field :admin
+      field :remember_created_at
+      field :sign_in_count
+      field :current_sign_in_at
+      field :last_sign_in_at
+      field :current_sign_in_ip
+      field :last_sign_in_ip
+      field :versions
+      field :products
+      field :reservations
+    end
+  end
+
   ## == Cancan ==
   # config.authorize_with :cancan
 

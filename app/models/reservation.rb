@@ -1,17 +1,26 @@
 class Reservation < ActiveRecord::Base
+  include Cancelable
+
   has_paper_trail
   
   belongs_to :user
   belongs_to :product, counter_cache: true
 
+  scope :normal, -> { where("is_canceled = ?", false) }
+  scope :recent, lambda { where("available_at between ? and ?", Date.today.beginning_of_day, Date.today.end_of_day) }
+
   validate :start_date_cannot_be_in_the_past
   validate :slots_exceed
 
-  # A user can only make a reservation on a product once
   validates :user_id, :uniqueness => { :scope => :product_id, message: "has already booked" }
 
-  # This is cool. Lets Reservation use the available_at attribute from product.
   delegate :available_at, to: :product
+
+  after_cancel :decrement_counter_cache
+
+  def decrement_counter_cache
+    Product.update_counters product.id, reservations_count: -1
+  end
 
   def start_date_cannot_be_in_the_past
     if starts_at && starts_at < DateTime.now + (15.minutes)
@@ -25,16 +34,12 @@ class Reservation < ActiveRecord::Base
     end
   end
 
-  def overlap?
-  	# Check to see if any reservations overlap. Might not be needed if its first come first serve.
-  end
-
   def self.new_reservations_today
     joins(:product).where("available_at between ? and ? and is_canceled = ?", 
       Date.today.beginning_of_day, Date.today.end_of_day, false).count
   end
 
   def self.reservations_canceled
-      where("is_canceled = ?", true).count
+    where("is_canceled = ?", true).count
   end
 end

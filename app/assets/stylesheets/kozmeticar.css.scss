@@ -104,3 +104,13 @@
     text-transform: uppercase;
     top: 13px;
 }
+
+.panel-primary {
+    border-color: #CD6A9D;
+}
+
+.panel-primary > .panel-heading {
+    color: #FFF;
+    background-color: #CD6A9D;
+    border-color: #CD6A9D;
+}

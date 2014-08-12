@@ -1,0 +1,69 @@
+<div class="container">
+
+	<div class="row">
+	  <div class="col-md-2">
+	  	<ul class="nav nav-pills nav-stacked">
+	  		<li><%= link_to "Rails Admin", rails_admin_path, class: 'list-group-item' %></li>
+	  		<li><%= link_to "PGHero", pg_hero_path, class: 'list-group-item' %></li>
+	  	</ul>
+	  </div>
+		<div class="col-md-5">
+			<div class="panel panel-default">
+				<div class="panel-heading">Status - <%= link_to "View", recent_reservations_path %></div>
+				<div class="panel-body">
+				<p>Reservations today: </p>
+					<div class="progress">
+					  <div class="progress-bar" role="progressbar" aria-valuenow="<%= @reservations_count_today %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @reservations_count_today %>%;"><%= @reservations_count_today %></div>
+					 </div>
+				<p>Reservations canceled: </p>
+				    <div class="progress">
+					  <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="<%= @count_reservations_canceled %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @count_reservations_canceled %>%;"><%= @count_reservations_canceled %></div>
+					 </div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-5">
+			<div class="panel panel-default">
+				<div class="panel-heading">Broadcast Message</div>
+				<div class="panel-body">
+				
+				<%= render 'admin/forms' %>
+
+				<% @broadcast_messages.each do |broadcast_message| %>
+					<table class="table">
+					<tbody>
+                       <tr>
+                         <td><%= broadcast_message.message %></td>
+                         <td><%= link_to "Remove", broadcast_message_path(broadcast_message), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %></td>
+                       </tr>
+                   </tbody>
+                   </table>
+                   <% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row"><div class="col-md-2"></div>
+		<div class="col-md-5">
+		<div class="panel panel-default">
+		  <div class="panel-heading">User stats</div>
+		  <div class="panel-body">
+			  <div class="col-sm-4">
+    <p>Last Sign Ups</p>
+    <ul class="list-unstyled">
+      <% @user_signups.each do |user| %>
+      <li class="list-padded-bottom">
+        <%= user.email %><br/>
+        <small><%= time_ago_in_words(user.created_at)%> ago</small>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+  </div>
+  </div>
+		</div>
+</div>
+
+
+</div>

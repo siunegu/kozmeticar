@@ -13,14 +13,16 @@
   </thead>
 
   <tbody>
-    <% @reservations.each do |reservation| %>
-      <tr>
+    <% @recent_reservations.each do |reservation| %>
+      <tr class=<%= 'danger' if reservation.is_canceled? %>>
         <td><%= reservation.available_at.strftime("%B %e, %H:%M") %></td>
         <td><%= reservation.user.fullname %></td>
         <td><%= reservation.product.name %></td>
         <td><%= reservation.product.employee %></td>
         <td><%= reservation.product.price %></td>
+        <% unless reservation.is_canceled? %>
         <td><%= link_to 'Cancel', cancel_reservation_path(reservation), method: :put %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

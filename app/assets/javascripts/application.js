@@ -12,6 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require peek
+//= require peek/views/performance_bar
+//= require peek/views/rblineprof
 //= require bootstrap
 //= require bootstrap-sprockets
 //= require bootstrap-datepicker

@@ -1,35 +1,25 @@
 class ReservationsController < ApplicationController
-  before_action :set_reservation, only: [:show, :edit, :update, :destroy]
+  before_action :set_reservation, only: [:show, :cancel]
 
-  # GET /reservations
-  # GET /reservations.json
+
   def index
-    @reservations = current_user.reservations.includes(:user, :product).all
+    @reservations = current_user.reservations.includes(:user, :product).normal
   end
 
-  # GET /reservations/1
-  # GET /reservations/1.json
   def show
   end
 
-  # GET /reservations/new
   def new
     @product = Product.where('name = ?', params[:product_id]).first if params[:product_id].present?
     @reservation = Reservation.new product: @product
   end
-
-  # GET /reservations/1/edit
-  def edit
-  end
-
-  # POST /reservations
-  # POST /reservations.json
+ 
   def create
     @reservation = current_user.reservations.create reservation_params
 
     respond_to do |format|
       if @reservation.save
-        format.html { redirect_to @reservation, notice: 'Reservation was successfully created.' }
+        format.html { redirect_to @reservation, notice: 'You can cancel your reservation max. 30 mins prior to the beginning of the reservation.' }
         format.json { render action: 'show', status: :created, location: @reservation }
       else
         format.html { render action: 'new' }
@@ -38,29 +28,12 @@ class ReservationsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /reservations/1
-  # PATCH/PUT /reservations/1.json
-  def update
-    respond_to do |format|
-      if @reservation.update(reservation_params)
-        format.html { redirect_to @reservation, notice: 'Reservation was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @reservation.errors, status: :unprocessable_entity }
-      end
-    end
+  def cancel
+    @reservation.cancel
+
+    redirect_to '/reservations'
   end
 
-  # DELETE /reservations/1
-  # DELETE /reservations/1.json
-  def destroy
-    @reservation.destroy
-    respond_to do |format|
-      format.html { redirect_to reservations_url }
-      format.json { head :no_content }
-    end
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

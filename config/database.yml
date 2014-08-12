@@ -4,8 +4,8 @@ development:
   database: kozmeticar_dev
   pool: 5
   host: localhost
-  username: 
-  password: ""
+  username: ember
+  password: "kozmeticar"
 
 production:
   adapter: postgresql
@@ -13,5 +13,5 @@ production:
   database: kozmeticar_prod
   pool: 5
   host: localhost
-  username: 
-  password: ""
+  username: ember
+  password: "kozmeticar"
