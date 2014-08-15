@@ -1,17 +1,13 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: kozmeticar_development
+  database: kozmeticar_dev
   pool: 5
   host: localhost
-  username: kozmeticar
-  password: 
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: kozmeticar_production
+  database: kozmeticar_prod
   pool: 5
   host: localhost
-  username: kozmeticar
-  password: 
