@@ -32,6 +32,7 @@
 <% unless product.available_at < Time.now + (30.minutes) %>
    <div class="col-sm-4 col-lg-4 col-md-4">
      <div class="thumbnail">
+     <img src=<%= product.cover.thumb %>></img>
           <div class="caption">
             <h4 class="pull-right"><%= product.price %> ден</h4>
               <h4><%= product.name %></h4>
