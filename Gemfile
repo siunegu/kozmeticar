@@ -74,6 +74,13 @@ gem 'pg_search'
 # PGHero
 gem 'pghero'
 
+# Track visits
+gem 'ahoy_matey'
+
+ # Uploading
+gem 'carrierwave'
+gem 'mini_magick'
+
 # Lets peek .. in our app
 gem 'peek'
 gem 'peek-git'
@@ -89,4 +96,5 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'quiet_assets'
+  gem 'annotate', "~> 2.6.5"
 end

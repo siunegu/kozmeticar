@@ -2,8 +2,10 @@
 <% unless product.available_at < Time.now + (30.minutes) %>
    <div class="col-sm-4 col-lg-4 col-md-4">
      <div class="thumbnail">
-       <span class="promo"></span>
-        <span class="sale">Promo</span>
+       <span class="promo">
+        <i class="fa fa-bullhorn has_top_tooltip" title="Promoted"></i>
+        </span>
+        <img src=<%= product.cover.thumb %>></img>
           <div class="caption">
             <h4 class="pull-right"><%= product.price %> ден</h4>
               <h4><%= product.name %></h4>
@@ -11,7 +13,11 @@
           </div>
             <div class="clearfix">
               <div class="employees">
-                <p class="pull-right"><%= link_to "Book Now!", new_reservation_path(product_id: product.name), class: "btn btn-primary btn-xs" %></p>
+                <p class="pull-right"><%= link_to "Book Now!", new_reservation_path(product_id: product.name), class: "btn btn-primary btn-xs" %> 
+                  <% if current_user.try(:admin?) %>
+                  <%= link_to '<i class="fa fa-edit"></i>'.html_safe, rails_admin.edit_path(model_name: 'product', id: product.id), title: "Edit", class: "btn btn-danger btn-xs has_top_tooltip" %>
+                  <% end %>
+                </p>
                     <p><%= product.employee %></p>
                 </div>
              </div>
@@ -33,7 +39,11 @@
           </div>
             <div class="clearfix">
               <div class="employees">
-                <p class="pull-right"><%= link_to "Book Now!", new_reservation_path(product_id: product.name), class: "btn btn-primary btn-xs" %></p>
+                <p class="pull-right"><%= link_to "Book Now!", new_reservation_path(product_id: product.name), class: "btn btn-primary btn-xs" %>
+                <% if current_user.try(:admin?) %>
+                  <%= link_to '<i class="fa fa-edit"></i>'.html_safe, rails_admin.edit_path(model_name: 'product', id: product.id), class: "btn btn-danger btn-xs" %>
+                  <% end %>
+                </p>
                     <p><%= product.employee %></p>
                 </div>
              </div>

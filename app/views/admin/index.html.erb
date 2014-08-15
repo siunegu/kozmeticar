@@ -5,11 +5,12 @@
 	  	<ul class="nav nav-pills nav-stacked">
 	  		<li><%= link_to "Rails Admin", rails_admin_path, class: 'list-group-item' %></li>
 	  		<li><%= link_to "PGHero", pg_hero_path, class: 'list-group-item' %></li>
+	  		<li><%= link_to "Traffic", recent_visits_path, class: 'list-group-item' %></li>
 	  	</ul>
 	  </div>
 		<div class="col-md-5">
 			<div class="panel panel-default">
-				<div class="panel-heading">Status - <%= link_to "View", recent_reservations_path %></div>
+				<div class="panel-heading">Status - <%= link_to "View Reservations", recent_reservations_path %></div>
 				<div class="panel-body">
 				<p>Reservations today: </p>
 					<div class="progress">

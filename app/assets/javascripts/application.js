@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require ahoy
 //= require jquery_ujs
 //= require peek
 //= require peek/views/performance_bar
@@ -19,6 +20,4 @@
 //= require bootstrap-sprockets
 //= require bootstrap-datepicker
 //= require turbolinks
-//= require nprogress
-//= require nprogress-turbolinks
 //= require_tree .

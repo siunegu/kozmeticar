@@ -1,5 +1,9 @@
 RailsAdmin.config do |config|
 
+  class RailsAdmin::Config::Fields::Types::Uuid < RailsAdmin::Config::Fields::Base
+    RailsAdmin::Config::Fields::Types::register(self)
+  end
+
   ### Popular gems integration
 
   ## == Devise ==
@@ -18,6 +22,7 @@ RailsAdmin.config do |config|
   config.model 'Product' do
     edit do
       field :name
+      field :cover, :carrierwave
       field :available_at
       field :employee
       field :description
@@ -65,6 +70,7 @@ RailsAdmin.config do |config|
       field :versions
       field :products
       field :reservations
+      field :visits
     end
   end
 

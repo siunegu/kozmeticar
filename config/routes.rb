@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   authenticate :user, lambda {|user| user.admin? } do
     get '/admin' => 'admin#index'
     get '/recent-reservations' => "pages#recent_reservations", path: '/admin/recent_reservations'
+    get '/recent-visits' => "pages#recent_visits", path: '/admin/recent_visits'
     resources :broadcast_messages, only: [:create, :destroy], path: '/admin/broadcast_messages'
 
 

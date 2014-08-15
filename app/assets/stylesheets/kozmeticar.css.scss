@@ -35,8 +35,6 @@
     background-color: #CD6A9D;
 }
 
-.table > tbody > tr.warning > td {}
-
 .btn-success {
     color: #FFF;
     background-color: #CD6A9D;
@@ -86,23 +84,18 @@
 }
 
 .promo {
-    border-top: 70px solid #9ada6e;
-    border-left: 70px solid transparent;
+    border-top: 48px solid #9ada6e;
+    border-left: 48px solid transparent;
     position: absolute;
-    right: 15px;
+    right: 16px;
 }
 
-.sale {
-    transform: rotate(45deg);
+.promo .fa {
+    transform: rotate(5deg);
     color: #FFF;
-    font-family: "Roboto Condensed";
-    font-size: 16px;
-    right: 10px;
-    padding: 0px 0px 0px 7px;
+    bottom: 26px;   
+    right: 8px;
     position: absolute;
-    text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.35);
-    text-transform: uppercase;
-    top: 13px;
 }
 
 .panel-primary {

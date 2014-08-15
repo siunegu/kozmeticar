@@ -20,7 +20,7 @@
         <td><%= reservation.product.name %></td>
         <td><%= reservation.product.employee %></td>
         <td><%= reservation.product.price %></td>
-        <td><%= link_to 'Cancel', cancel_reservation_path(reservation), method: :put %></td>
+        <td><%= link_to '<i class="fa fa-times"></i>'.html_safe, cancel_reservation_path(reservation), method: :put, title: "Cancel", class: "btn btn-danger btn-xs has_top_tooltip" %></td>
       </tr>
     <% end %>
   </tbody>

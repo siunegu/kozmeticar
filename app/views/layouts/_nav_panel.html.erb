@@ -16,12 +16,12 @@
       <ul class="nav navbar-nav">
       <li class=<%= 'active' if request.original_fullpath =~ /^\/products/ %>><%= link_to "Services", products_path %></li>
       <% if user_signed_in? %>
-      <li class=<%= 'active' if request.original_fullpath =~ /^\/reservations/ %>><%= link_to '<i class="fa fa-list"></i> Your Reservations'.html_safe, reservations_path %></li>
+      <li class=<%= 'active' if request.original_fullpath =~ /^\/reservations/ %>><%= link_to "Your Reservations", reservations_path %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
       <li class=<%= 'active' if request.original_fullpath =~ /^\/users/ %>><%= link_to 'Settings', edit_user_registration_path %></li>
       <% if current_user.try(:admin?) %>
-      <li><%= link_to "Admin", admin_path %></li>
+      <li class=<%= 'active' if request.original_fullpath =~ /^\/admin/ %>><%= link_to "Admin", admin_path %></li>
       <% end %>
       <li><%= link_to "Logout", destroy_user_session_path, method: :delete %>
       <% else %>

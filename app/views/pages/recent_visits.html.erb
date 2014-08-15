@@ -1,0 +1,46 @@
+<div class="container">
+
+<%= form_tag recent_visits_path, method: 'get', html: {role: "form"} do %>
+  <p>
+  <div class="col-md-6">
+    <%= text_field_tag :search, params[:search], placeholder: "Find a visit...", class: "form-control" %>
+  </div>
+    <%= submit_tag "Search", name: nil, class: "btn btn-success" %>
+ </p>
+<% end %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>IP</th>
+      <th>ID</th>
+      <th>Agent</th>
+      <th>Browser</th>
+      <th>OS</th>
+      <th>Device</th>
+      <th>Country</th>
+      <th>City</th>
+      <th>Region</th>
+      <th>Time</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @recent_visits.each do |visit| %>
+      <tr>
+        <td><%= visit.ip  %></td>
+        <td><%= visit.user_id %></td>
+        <td><%= visit.user_agent %></td>
+        <td><%= visit.browser %></td>
+        <td><%= visit.os %></td>
+        <td><%= visit.device_type %></td>
+        <td><%= visit.country %></td>
+        <td><%= visit.city %></td>
+        <td><%= visit.region %></td>
+        <td><%= visit.started_at.strftime("%B %e, %H:%M") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</div>

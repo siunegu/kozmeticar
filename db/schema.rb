@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140810115946) do
+ActiveRecord::Schema.define(version: 20140815162203) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "ahoy_events", id: false, force: true do |t|
+    t.uuid     "id",         null: false
+    t.uuid     "visit_id"
+    t.integer  "user_id"
+    t.string   "name"
+    t.json     "properties"
+    t.datetime "time"
+  end
+
+  add_index "ahoy_events", ["time"], name: "index_ahoy_events_on_time", using: :btree
+  add_index "ahoy_events", ["user_id"], name: "index_ahoy_events_on_user_id", using: :btree
+  add_index "ahoy_events", ["visit_id"], name: "index_ahoy_events_on_visit_id", using: :btree
 
   create_table "broadcast_messages", force: true do |t|
     t.text     "message"
@@ -44,6 +57,7 @@ ActiveRecord::Schema.define(version: 20140810115946) do
     t.integer  "category_id"
     t.integer  "reservations_count", default: 0
     t.integer  "reservation_slots",  default: 1
+    t.string   "cover"
   end
 
   add_index "products", ["user_id"], name: "index_products_on_user_id", using: :btree
@@ -92,5 +106,31 @@ ActiveRecord::Schema.define(version: 20140810115946) do
   end
 
   add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
+
+  create_table "visits", id: false, force: true do |t|
+    t.uuid     "id",               null: false
+    t.uuid     "visitor_id"
+    t.string   "ip"
+    t.text     "user_agent"
+    t.text     "referrer"
+    t.text     "landing_page"
+    t.integer  "user_id"
+    t.string   "referring_domain"
+    t.string   "search_keyword"
+    t.string   "browser"
+    t.string   "os"
+    t.string   "device_type"
+    t.string   "country"
+    t.string   "region"
+    t.string   "city"
+    t.string   "utm_source"
+    t.string   "utm_medium"
+    t.string   "utm_term"
+    t.string   "utm_content"
+    t.string   "utm_campaign"
+    t.datetime "started_at"
+  end
+
+  add_index "visits", ["user_id"], name: "index_visits_on_user_id", using: :btree
 
 end
