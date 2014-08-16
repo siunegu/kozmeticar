@@ -45,10 +45,15 @@ class Product < ActiveRecord::Base
   validates :employee, presence: true
   validates :price, presence: true
 
+  paginates_per 10
+
 
   def self.search_by_date(date)
     date = Date.parse(date)
     self.where("available_at > ? AND available_at < ?", date.beginning_of_day, date.end_of_day)
   end
-  
+
+  def time_available
+    "#{available_at.strftime('%B %e, %H:%M')}"
+  end
 end

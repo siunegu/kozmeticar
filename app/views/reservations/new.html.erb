@@ -1,9 +1,14 @@
 <div class="container">
 
-<h1>New reservation</h1>
+<div class="panel panel-default">
+<div class="panel-heading">New Reservation - <%= link_to 'Back to Products', reservations_path %></div>
+<div class="panel-body">
 
+<div class="col-md-5">
 <%= render 'form' %>
+</div>
 
-<%= link_to 'Back', reservations_path %>
+</div>
+</div>
 
 </div>

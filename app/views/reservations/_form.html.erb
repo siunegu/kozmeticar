@@ -1,5 +1,3 @@
-
-
 <%= form_for(@reservation) do |f| %>
   <% if @reservation.errors.any? %>
     <div id="error_explanation">
@@ -15,14 +13,14 @@
 
   <div class="field">
     <%= f.label :starts_at %><br>
-    <%= f.collection_select :product_id, Product.where("available_at > ?", Time.now), :id, :available_at, { include_blank: "Select a time"}, class: 'form-control' %>
+    <%= f.collection_select :product_id, Product.recent.upcoming.reservation_quota, :id, :time_available, { include_blank: "Select a time"}, class: 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :product_id %><br>
-    <%= f.collection_select :product_id, Product.where("available_at > ?", Time.now), :id, :name, { include_blank: "Select a product"}, class: 'form-control' %>
+    <%= f.collection_select :product_id, Product.recent.upcoming.reservation_quota, :id, :name, { include_blank: "Select a product"}, class: 'form-control' %>
   </div>
   <br>
   <div class="actions">
-    <%= f.submit "Submit", class: "btn btn-success" %>
+    <%= f.submit "Submit", class: "btn btn-success", data: { disable_with: "Submitting..." } %>
   </div>
 <% end %>

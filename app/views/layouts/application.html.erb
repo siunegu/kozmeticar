@@ -14,7 +14,10 @@
 
 	<%= render 'layouts/nav_panel' %>
 
-<%= yield %>
+<div class="container">
+       <%= render 'shared/messages' %>
+       <%= yield %>
+</div>
 
 </body>
 </html>

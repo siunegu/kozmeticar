@@ -13,12 +13,12 @@
           </div>
             <div class="clearfix">
               <div class="employees">
-                <p class="pull-right"><%= link_to "Book Now!", new_reservation_path(product_id: product.name), class: "btn btn-primary btn-xs" %> 
-                  <% if current_user.try(:admin?) %>
+                <p class="pull-right"><%= link_to "Book Now!", new_reservation_path(product_id: product.name), class: "btn btn-primary btn-xs" %>
+                <% if current_user.try(:admin?) %>
                   <%= link_to '<i class="fa fa-edit"></i>'.html_safe, rails_admin.edit_path(model_name: 'product', id: product.id), title: "Edit", class: "btn btn-danger btn-xs has_top_tooltip" %>
                   <% end %>
                 </p>
-                    <p><%= product.employee %></p>
+                    <p><%= product.employee %> - <%= product.available_at.strftime('%H:%M') %>h</p>
                 </div>
              </div>
       </div>
@@ -35,17 +35,17 @@
      <img src=<%= product.cover.thumb %>></img>
           <div class="caption">
             <h4 class="pull-right"><%= product.price %> ден</h4>
-              <h4><%= product.name %></h4>
+              <h4><%= product.name %> <small><%= product.available_at.strftime("%H:%M") %>h</small></h4>
               <p><%= product.description %></p>
           </div>
             <div class="clearfix">
               <div class="employees">
                 <p class="pull-right"><%= link_to "Book Now!", new_reservation_path(product_id: product.name), class: "btn btn-primary btn-xs" %>
                 <% if current_user.try(:admin?) %>
-                  <%= link_to '<i class="fa fa-edit"></i>'.html_safe, rails_admin.edit_path(model_name: 'product', id: product.id), class: "btn btn-danger btn-xs" %>
+                  <%= link_to '<i class="fa fa-edit"></i>'.html_safe, rails_admin.edit_path(model_name: 'product', id: product.id), title: "Edit", class: "btn btn-danger btn-xs has_top_tooltip" %>
                   <% end %>
                 </p>
-                    <p><%= product.employee %></p>
+                    <p><%= product.employee %> - <%= product.available_at.strftime('%H:%M') %></p>
                 </div>
              </div>
       </div>

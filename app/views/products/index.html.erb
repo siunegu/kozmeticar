@@ -6,7 +6,7 @@
 		<%= form_tag products_path, method: 'get', html: {role: "form"} do %>
   <p>
   <div class="col-md-6">
-    <%= text_field_tag :date, params[:date], "data-behaviour" => "datepicker", id: "datepicker", placeholder: "Search products by date", class: "form-control" %>
+    <%= text_field_tag :date, params[:date], "data-behaviour" => "datepicker", id: "datepicker", placeholder: "Click here to find a product by date", class: "form-control" %>
   </div>
     <%= submit_tag "Search", name: nil, class: "btn btn-success" %>
  </p>
