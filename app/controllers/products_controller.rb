@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
     @products = Product.search_by_date(params[:date]) unless params[:date].blank?
 
     if params[:category_id]
-      @category = Category.where('id = ?', params[:category_id].downcase).first!
+      @category = Category.where('lower(name) = ?', params[:category_id].downcase).first!
       @products = @products.where(category: @category)
     end
   end

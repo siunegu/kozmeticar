@@ -20,7 +20,7 @@
 	<ul class="nav nav-pills nav-stacked">
 		<li class=<%= 'active' unless @category.present? %>><%= link_to "All Products", products_path, class: "list-group-item" %></li>
 		<% Category.order(products_count: :desc).each do |category| %>
-		<li class=<%= 'active' if category == @category %>><%= link_to "#{category.name}", categoried_products_path(category_id: category.id), class: "list-group-item" %></li>
+		<li class=<%= 'active' if category == @category %>><%= link_to "#{category.name}", categoried_products_path(category_id: category.name), class: "list-group-item" %></li>
 		<% end %>
 	</ul>
 </div>
