@@ -54,8 +54,7 @@ class User < ActiveRecord::Base
   end
 
   def online?
-    return false unless self.update_at
-    self.update_at > 5.minutes.ago
+    return false unless self.update_at > 5.minutes.ago
   end
 
 end

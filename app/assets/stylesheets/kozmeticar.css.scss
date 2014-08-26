@@ -1,26 +1,77 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+body {
+  font-family: 'Roboto', sans-serif;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+}
 .navbar-inverse {
-    background-color: #CD6A9D;
-    border-color: #bf5593;
+  background-color: #CD6A9D;
+  border-color: #bf5593;
 }
 
 .navbar-inverse .navbar-brand {
-    color: #FFF;
+  color: #FFF;
 }
 
 .navbar-inverse .navbar-nav > li > a {
-    color: #F7F0F3;
+  color: #F7F0F3;
 }
 
 .navbar-inverse .navbar-nav > li > a:hover {
-    color: #fff;
+  color: #fff;
+}
+
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+  background-color: #bf5593;
+  color: white;
 }
 
 .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
-    color: #FFF;
-    background-color: #bf5593;
+  color: #FFF;
+  background-color: #bf5593;
+}
+.panel {
+  border-color: #cfd9D7;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+}
+.panel-default > .panel-heading {
+  color: #444;
+  border-color: #cfd9db;
+  font-weight: bold;
+  font-size: 85%;
+  text-transform: uppercase;
+  background-color: #f6f6f6;
+}
+.btn-primary {
+  background-color: #1d7cf4;
+}
+.form-control {
+  border-radius: 0;
+}
+.center-form {
+  width: 330px;
+  margin: 12% auto;
+}
+.signup-or-separator {
+  background: none;
+  height: 34px;
+  position: relative;
+  text-align: center;
+}
+.signup-or-separator hr {
+  border-top: 1px solid #dce0e0;
+  margin: -16px auto 10px auto;
+  width: 90%;
+}
+.signup-or-separator .text {
+  background-color: #fff;
+  display: inline-block;
+  margin: 0;
+  padding: 8px;
 }
 
 .list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {

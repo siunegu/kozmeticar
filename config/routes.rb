@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   
   resources :products, only: [:index, :show] do
     collection do
-      get 'categoried/:category_id', to: 'products#index', as: :categoried
+      get 'c/:category_id', to: 'products#index', as: :categoried
     end
   end
 

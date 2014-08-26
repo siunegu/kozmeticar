@@ -11,13 +11,12 @@
 // about supported directives.
 //
 //= require jquery
+//= require bootstrap-sprockets
 //= require ahoy
 //= require jquery_ujs
 //= require peek
 //= require peek/views/performance_bar
 //= require peek/views/rblineprof
-//= require bootstrap
-//= require bootstrap-sprockets
 //= require bootstrap-datepicker
 //= require turbolinks
 //= require_tree .

@@ -19,7 +19,7 @@
       <li class=<%= 'active' if request.original_fullpath =~ /^\/reservations/ %>><%= link_to "Your Reservations", reservations_path %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-      <li class=<%= 'active' if request.original_fullpath =~ /^\/users/ %>><%= link_to 'Settings', edit_user_registration_path %></li>
+      <li class=<%= 'active' if request.original_fullpath =~ /^\/users/ %>><%= link_to "#{current_user.fullname}", edit_user_registration_path, title: "Settings", class: "has_bottom_tooltip" %></li>
       <% if current_user.try(:admin?) %>
       <li class=<%= 'active' if request.original_fullpath =~ /^\/admin/ %>><%= link_to "Admin", admin_path %></li>
       <% end %>

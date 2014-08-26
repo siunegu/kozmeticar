@@ -14,3 +14,4 @@ $(document).on "page:change", ->
 $(document).on "page:change", ->
  $('.has_tooltip').tooltip()
  $('.has_top_tooltip').tooltip(placement: 'top')
+ $('.has_bottom_tooltip').tooltip(placement: 'bottom')
