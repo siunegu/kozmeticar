@@ -57,7 +57,7 @@ gem 'devise'
 gem 'rails_admin'
 
 # Papertrail
-gem 'paper_trail', '~> 3.0.3'
+gem 'paper_trail', '~> 4.0.0.beta'
 
 # Puma
 gem 'puma'
@@ -87,6 +87,9 @@ gem 'peek-git'
 gem 'peek-performance_bar'
 gem 'peek-pg'
 gem 'peek-rblineprof'
+
+# Safe Yaml
+gem 'safe_yaml', '~> 1.0.4'
 
 group :production do
   gem 'rails_12factor'
